@@ -4,7 +4,6 @@ import os
 import pickle
 import matplotlib.pyplot as plt
 import networkx as nx
-import karateclub
 
 import pandas as pd
 import numpy as np
@@ -287,30 +286,3 @@ def runner(tmp_, outf, crapome, thresh):
     df["ProtA"] = df["ProtA"].map(ids_d)
     df["ProtB"] = df["ProtB"].map(ids_d)
     df.to_csv(os.path.join(outf, "d_scores.txt"), sep="\t", index=False)
-    # now we need to filter m
-
-    # m, ids = preprocess_matrix(m, ids)
-    # clusters = rec_mcl(m)
-    # output_from_clusters(ids, clusters, outf)
-    # m[m==0]=10**-17
-    # G = nx.from_numpy_array(m)
-    # # G = nx.relabel_nodes(G,dict(zip(G.nodes, ids)))
-    # numeric_indices = [index for index in range(G.number_of_nodes())]
-    # node_indices = sorted([node for node in G.nodes()])
-    # # substitute 0 with small nr?
-    # # print(G.edges(data=True))
-    # # assert False
-    # spl = karateclub.EgoNetSplitter(10)
-    # spl.fit(nx.from_numpy_array(m))
-    # out = {}
-    # ids_d = dict(zip(range(0, len(ids)), ids))
-    # for k, v in spl.get_memberships().items():
-    #     for cl_id in v:
-    #         if out.get(cl_id):
-    #             out[cl_id].append(ids_d[k])
-    #         else:
-    #             out[cl_id] = [ids_d[k]]
-    # todf = {k: ','.join(v) for k, v in out.items()}
-    # out = pd.DataFrame.from_dict(todf, orient='index')
-    # outname = os.path.join(outf, "communities_out.txt")
-    # out.to_csv(outname, sep="\t", index=True)
